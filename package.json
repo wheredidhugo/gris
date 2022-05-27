@@ -1,0 +1,31 @@
+{
+  "name": "@wheredidhugo/gris",
+  "version": "1.0.0",
+  "description": "🌿 Git Remove and Init System",
+  "author": "Hugo <wheredidhugo@proton.me>",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [
+    "git"
+  ],
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "inquirer": "^8.2.4",
+    "meow": "^10.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wheredidhugo/gris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wheredidhugo/gris/issues"
+  },
+  "homepage": "https://github.com/wheredidhugo/gris",
+  "bin": {
+    "gris": "./index.js"
+  }
+}
