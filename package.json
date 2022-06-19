@@ -1,7 +1,7 @@
 {
   "name": "@wheredidhugo/gris",
-  "version": "1.0.0",
-  "description": "🌿 Git Remove and Init System",
+  "version": "2.0.0",
+  "description": "🌿 Git Really Interesting System",
   "author": "Hugo <wheredidhugo@proton.me>",
   "license": "MIT",
   "type": "module",

@@ -1,6 +1,6 @@
 # gris
 
-🌿 Git Remove and Init System
+🌿 Git Really Interesting System
 
 ## Installation
 
@@ -12,6 +12,6 @@ $ npm i -g @wheredidhugo/gris
 
 ```bash
 $ gris
-$ gris --yes
 $ gris -y
+$ gris -r wheredidhugo/gris
 ```

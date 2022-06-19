@@ -11,6 +11,11 @@ const cli = meow(
 
         Options
             --yes, -y      Automatically accept warning
+            --remote, -r   Change the origin remote to https://github.com/{options}
+
+        Examples
+          $ gris -y
+          $ gris wheredidhugo/gris -r
     `,
   {
     importMeta: import.meta,
@@ -19,19 +24,35 @@ const cli = meow(
         type: "boolean",
         alias: "y",
       },
+      remote: {
+        type: "string",
+        alias: "r",
+      },
     },
   }
 );
 
-function gris() {
+function remove() {
   exec("rm -rf .git");
   console.log(chalk.bold.white("Removed .git repository."));
   exec("git init");
   console.log(chalk.bold.white("Initialized git repository."));
 }
 
-if (cli.flags.yes) {
-  gris();
+function remote(link) {
+  exec(`git remote remove origin`);
+  exec(`git remote add origin https://github.com/${link}`);
+  console.log(
+    chalk.bold.white(
+      `Changed the link of the remote git repository link to ${link}.`
+    )
+  );
+}
+
+if (cli.flags.remote !== "") {
+  remote(cli.flags.remote);
+} else if (cli.flags.yes) {
+  remove();
 } else {
   await inquirer
     .prompt({
@@ -44,6 +65,6 @@ if (cli.flags.yes) {
     .then((answer) => {
       if (!answer.danger) {
         process.exit(1);
-      } else gris();
+      } else remove();
     });
 }
