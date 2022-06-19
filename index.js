@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import { exec } from "child_process";
+import { exec, execSync } from "child_process";
 import meow from "meow";
 import chalk from "chalk";
 import inquirer from "inquirer";
@@ -40,8 +40,11 @@ function remove() {
 }
 
 function remote(link) {
-  exec(`git remote remove origin`);
-  exec(`git remote add origin https://github.com/${link}`);
+  try {
+    execSync(`git remote add origin https://github.com/${link}`);
+  } catch (err) {
+    execSync(`git remote set-url origin https://github.com/${link}`);
+  }
   console.log(
     chalk.bold.white(
       `Changed the link of the remote git repository link to ${link}.`
